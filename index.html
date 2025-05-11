@@ -44,19 +44,22 @@
         const Hero = () => (
             <section id="home" className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-20">
                 <div className="container mx-auto text-center">
-                    <h2 className="text-5xl font-bold mb-4 animate-fade-in">Welcome to My World</h2>
-                    <p className="text-xl mb-6 max-w-2xl mx-auto">Discover my projects, skills, and passions through this interactive website.</p>
-                    <a href="#projects" className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition duration-300">Explore Projects</a>
+                    <h2 className="text-5xl font-bold mb-4 animate-fade-in">Aman Singh</h2>
+                    <p className="text-xl mb-6 max-w-2xl mx-auto">Computer Engineering Graduate | Machine Learning Enthusiast</p>
+                    <div className="flex justify-center space-x-4">
+                        <a href="#projects" className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition duration-300">Explore Projects</a>
+                        <a href="Aman_Singh_Resume.pdf" download className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition duration-300">Download Resume</a>
+                    </div>
                 </div>
             </section>
         );
 
         // Project Card Component
-        const ProjectCard = ({ title, description }) => {
+        const ProjectCard = ({ title, description, index }) => {
             const [isExpanded, setIsExpanded] = useState(false);
 
             return (
-                <div className="bg-white rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300">
+                <div className="bg-white rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300 animate-fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
                     <h4 className="text-xl font-semibold mb-2">{title}</h4>
                     <p className="text-gray-600">{isExpanded ? description : `${description.slice(0, 100)}...`}</p>
                     <button 
@@ -72,9 +75,9 @@
         // Projects Section
         const Projects = () => {
             const projects = [
-                { title: "Project One", description: "A web application built with React and Tailwind CSS, showcasing dynamic user interactions and responsive design." },
-                { title: "Project Two", description: "An e-commerce platform with a custom-built shopping cart and payment integration for seamless user experience." },
-                { title: "Project Three", description: "A data visualization dashboard using D3.js to present complex datasets in an intuitive format." },
+                { title: "Fault-Tolerant Neural Networks", description: "Implemented DNNs to detect Silent Data Corruptions with 100% detection rate using PyTorchFI and custom bit-flip functions, tested on AlexNet, ResNet-18, and LeNet-5." },
+                { title: "Adversarial and OOD Detection", description: "Developed a method using Mahalanobis distance and voting-based detection, achieving 92% accuracy for adversarial and OOD samples with reduced runtime overhead." },
+                { title: "Automation Framework for Android", description: "Built an automation framework for Android test cases and an APK to automate Bluetooth file transfers between devices using Python and Java." },
             ];
 
             return (
@@ -83,7 +86,7 @@
                         <h3 className="text-3xl font-bold text-center mb-10">My Projects</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {projects.map((project, index) => (
-                                <ProjectCard key={index} title={project.title} description={project.description} />
+                                <ProjectCard key={index} title={project.title} description={project.description} index={index} />
                             ))}
                         </div>
                     </div>
@@ -159,8 +162,8 @@
         const Footer = () => (
             <footer className="bg-gray-800 text-white py-6">
                 <div className="container mx-auto text-center">
-                    <p className="mb-4">Connect with me: <a href="mailto:your.email@example.com" className="underline">your.email@example.com</a></p>
-                    <p>© 2025 [Your Name]. All rights reserved.</p>
+                    <p className="mb-4">Connect with me: <a href="mailto:singh052001aman@gmail.com" className="underline">singh052001aman@gmail.com</a></p>
+                    <p>© 2025 Aman Singh. All rights reserved.</p>
                 </div>
             </footer>
         );
@@ -188,9 +191,20 @@
                 });
             });
         });
+
+        // Parallax Background Effect
+        window.addEventListener('scroll', function() {
+            var scrollPosition = window.pageYOffset;
+            document.body.style.backgroundPositionY = -scrollPosition / 2 + 'px';
+        });
     </script>
 
     <style>
+        body {
+            background-image: url('https://via.placeholder.com/1920x1080.png?text=Abstract+Tech+Background');
+            background-size: cover;
+            background-position: center;
+        }
         .animate-fade-in {
             animation: fadeIn 1s ease-in;
         }
